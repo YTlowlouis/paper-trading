@@ -10,7 +10,6 @@ class TradingEngine:
             "BTC": 40000
         }
 
-    # ---------- PRIX ----------
     def get_price(self, symbol: str) -> int:
         base = self.prices.get(symbol, 100)
         return round(base * random.uniform(0.98, 1.02), 2)
@@ -32,7 +31,7 @@ class TradingEngine:
         self.positions[symbol] = self.positions.get(symbol, 0) + quantity
 
         return {
-            "action": buy,
+            "action": "buy",
             "symbol": symbol,
             "qty": quantity,
             "price": price,
@@ -48,6 +47,8 @@ class TradingEngine:
 
         self.cash += revenue
         self.positions[symbol] -= qty
+        if self.positions[symbol] == 0:
+            self.positions.pop(symbol)
 
         return {
             "action": "SELL",
