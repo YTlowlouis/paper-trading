@@ -1,3 +1,4 @@
 paper-trading/
+*.db
 __pycache__/
 .env
