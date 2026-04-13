@@ -4,6 +4,7 @@ from sqlalchemy.orm import declarative_base, session_maker
 
 DATABASE_URL = "sqlite:///./data/database.db"
 
+Base = declarative_base()
 
 engine = create_engine(
     DATABASE_URL
